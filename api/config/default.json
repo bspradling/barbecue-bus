@@ -1,0 +1,7 @@
+{
+  "environment": "default",
+  "kitchen": {
+    "scheme": "http",
+    "host":"bbq-kitchen:8080"
+  }
+}

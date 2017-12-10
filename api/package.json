@@ -4,5 +4,16 @@
   "description": "A Barbecue Stand always ready to serve some delicious barbecue",
   "main": "server.js",
   "author": "Brett Spradling",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.6.0",
+    "body-parser": "^1.18.2",
+    "config": "^1.28.1",
+    "express": "^4.16.2",
+    "http": "0.0.0",
+    "http-status": "^1.0.1",
+    "lodash": "^4.17.4",
+    "request": "^2.83.0",
+    "swagger-node-express": "^2.1.3"
+  }
 }

@@ -1,5 +1,5 @@
 var BodyParser = require('body-parser');
-//var Config = require('config');
+var Config = require('config');
 var Express = require('express');
 var Routes = require('./app/routes/routes');
 var Swagger = require('swagger-node-express');
