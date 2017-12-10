@@ -7,6 +7,6 @@ module.exports = {
         return response.status(HttpStatus.OK).send(`Cooking ${request.params.sideType}!`);
     },
     list: function(request, response) {
-        return response.status(HttpStatus.OK).send("We got all the sides!");
+        return response.status(HttpStatus.OK).send(request.app.kitchen.sides);
     }
 }

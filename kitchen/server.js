@@ -29,6 +29,34 @@ app.get('/docs', function(request, response) {
     response.sendFile(__dirname + "/swagger/index.html");
 });
 
+var meats = {
+  BRISKET: {
+    quantity: 10
+  },
+  SAUSAGE: {
+    quantity: 10
+  },
+  RIBS: {
+    quantity: 10
+  },
+  CHICKEN: {
+    quantity: 10
+  }
+}
+
+var sides = {
+  BEANS: {
+    quantity: 5
+  },
+  MACARONI: {
+    quantity: 5
+  }
+}
+
+app.kitchen = {};
+app.kitchen.meats = meats;
+app.kitchen.sides = sides;
+
 var appPort = process.env.APP_PORT || 8080;
 var appInstance = app.listen(appPort);
 

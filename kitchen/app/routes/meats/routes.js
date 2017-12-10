@@ -7,6 +7,6 @@ module.exports = {
         return response.status(HttpStatus.OK).send(`Cooking ${request.params.meatType}!`);
     },
     list: function(request, response) {
-        return response.status(HttpStatus.OK).send(`We got all the meats!`);
+        return response.status(HttpStatus.OK).send(request.app.kitchen.meats);
     }
 }
