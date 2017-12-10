@@ -1,0 +1,226 @@
+{
+  "swagger": "2.0",
+  "info": {
+      "version": "1.0.0",
+      "title": "Barbeque Bus Api",
+      "termsOfService": "http://swagger.io/terms/"
+  },
+  "basePath": "/",
+  "tags" : [
+      {"name": "Kitchen"}
+  ],
+  "consumes": [
+      "application/json"
+  ],
+  "produces": [
+      "application/json"
+  ],
+  "paths": {
+    "/api/v1/meats": {
+      "get": {
+        "tags": ["Kitchen"],
+        "summary": "Retreive meat options",
+        "operationId": "getMeats",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "brisket": {
+                  "$ref": "#/definitions/FoodItem"
+                },
+                "sausage": {
+                  "$ref": "#/definitions/FoodItem"
+                },
+                "ribs": {
+                  "$ref": "#/definitions/FoodItem"
+                },
+                "chicken": {
+                  "$ref": "#/definitions/FoodItem"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorEntity"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorEntity"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/sides": {
+      "get": {
+        "tags": ["Kitchen"],
+        "summary": "Retreive side options",
+        "operationId": "getSides",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "beans": {
+                  "$ref": "#/definitions/FoodItem"
+                },
+                "macaroni": {
+                  "$ref": "#/definitions/FoodItem"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid Request",
+            "schema": {
+            "$ref": "#/definitions/ErrorEntity"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorEntity"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/meats/{meatType}": {
+      "post": {
+        "tags": ["Kitchen"],
+        "summary": "Cook the specified meat",
+        "operationId": "cookMeat",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Invalid Request",
+            "schema": {
+            "$ref": "#/definitions/ErrorEntity"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorEntity"
+            }
+          }
+        }
+      },
+      "parameters": [{
+        "name": "meatType",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "BRISKET",
+            "SAUSAGE",
+            "RIBS",
+            "CHICKEN"
+          ]
+        }
+      }]
+    },
+    "/api/v1/sides/{sideType}": {
+      "post": {
+        "tags": ["Kitchen"],
+        "summary": "Cook the specified side",
+        "operationId": "cookSide",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Invalid Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorEntity"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorEntity"
+            }
+          }
+        },
+        "parameters": [{
+          "name": "sideType",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "enum": [
+              "BEANS",
+              "MACARONI"
+            ]
+          }
+        }]
+      }
+    }
+  },
+  "definitions": {
+    "ErrorEntity": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string",
+          "readOnly": true
+        },
+        "message": {
+          "type": "string",
+          "readOnly": true
+        },
+        "fields": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/ErrorFieldEntity"
+          }
+        }
+      }
+    },
+    "ErrorFieldEntity":{
+       "type":"object",
+       "properties":{
+         "path":{
+           "type":"string",
+           "readOnly": true
+         },
+         "message":{
+           "type":"string",
+           "readOnly": true
+         }
+       }
+    },
+    "FoodItem": {
+      "type": "object",
+      "properties": {
+        "quantity": {
+          "type": "integer",
+          "example": 1
+        }
+      }
+    }
+  }
+}

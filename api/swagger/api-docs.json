@@ -165,11 +165,13 @@
         }, 
         "sides": {
           "type": "object",
-          "beans": {
-            "$ref": "#/definitions/FoodItem"
-          },
-          "macaroni": {
-            "$ref": "#/definitions/FoodItem"
+          "properties": {
+            "beans": {
+              "$ref": "#/definitions/FoodItem"
+            },
+            "macaroni": {
+              "$ref": "#/definitions/FoodItem"
+            }
           }
         }
       }
@@ -178,7 +180,8 @@
        "type": "object",
        "properties": {
          "quantity": {
-           "type": "string"
+           "type": "integer",
+           "example": 1
          }
        }
     },
