@@ -29,7 +29,7 @@ app.get('/docs', function(request, response) {
     response.sendFile(__dirname + "/swagger/index.html");
 });
 
-var appPort = process.env.appPort || 8080;
+var appPort = process.env.APP_PORT || 8080;
 var appInstance = app.listen(appPort);
 
 console.log("API running in %s on port %d", "development"/*Config.get('environment')*/, appPort);
