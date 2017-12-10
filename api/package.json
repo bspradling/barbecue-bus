@@ -1,0 +1,8 @@
+{
+  "name": "bbq-bus-api",
+  "version": "1.0.0",
+  "description": "A Barbecue Stand always ready to serve some delicious barbecue",
+  "main": "server.js",
+  "author": "Brett Spradling",
+  "license": "ISC"
+}

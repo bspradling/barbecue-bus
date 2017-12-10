@@ -1,0 +1,195 @@
+{
+  "swagger": "2.0",
+  "info": {
+      "version": "1.0.0",
+      "title": "Barbeque Bus Api",
+      "termsOfService": "http://swagger.io/terms/"
+  },
+  "basePath": "/",
+  "tags" : [
+      {"name": "Barbeque"}
+  ],
+  "consumes": [
+      "application/json"
+  ],
+  "produces": [
+      "application/json"
+  ],
+  "paths": {
+    "/api/v1/menu": {
+      "get": {
+        "tags": ["Barbeque"],
+        "summary": "Get the Barbeque Bus Menu",
+        "operationId": "menu",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MenuResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid Request",
+            "schema": {
+            "$ref": "#/definitions/ErrorEntity"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorEntity"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/purchase": {
+      "post": {
+        "tags": ["Barbeque"],
+        "summary": "Place an Order for Barbeque",
+        "operationId": "purchase",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/PurchaseResponse"
+            }
+            },
+          "400": {
+            "description": "Invalid Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorEntity"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorEntity"
+            }
+          }
+        },
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/BarbequeOrder"
+          }
+        }]
+      }
+    }
+  },
+  "definitions": {
+    "ErrorEntity": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string",
+          "readOnly": true
+        },
+        "message": {
+          "type": "string",
+          "readOnly": true
+        },
+        "fields": {
+          "type": "array",
+          "readOnly": true,
+          "items": {
+            "$ref": "#/definitions/ErrorFieldEntity"
+          }
+        }
+      }
+    },
+    "ErrorFieldEntity":{
+       "type":"object",
+       "properties":{
+         "path":{
+           "type":"string",
+           "readOnly": true
+         },
+         "message":{
+           "type":"string",
+           "readOnly": true
+         }
+       }
+    },
+    "BarbequeOrder": {
+      "type": "object",
+      "required": ["name", "food"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Brett Spradling"
+        },
+        "food": {
+          "$ref": "#/definitions/Menu"
+        }
+      }
+    },
+    "MenuResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "food" : {
+          "$ref": "#/definitions/Menu"
+        }
+      }
+    },
+    "Menu": {
+      "type": "object",
+      "properties": {
+        "meats": {
+          "type": "object",
+          "properties": {
+            "brisket": {
+              "$ref": "#/definitions/FoodItem"
+            },
+            "sausage": {
+              "$ref": "#/definitions/FoodItem"
+            },
+            "ribs": {
+              "$ref": "#/definitions/FoodItem"
+            },
+            "chicken": {
+              "$ref": "#/definitions/FoodItem"
+            }
+          }
+        }, 
+        "sides": {
+          "type": "object",
+          "beans": {
+            "$ref": "#/definitions/FoodItem"
+          },
+          "macaroni": {
+            "$ref": "#/definitions/FoodItem"
+          }
+        }
+      }
+    },
+    "FoodItem": {
+       "type": "object",
+       "properties": {
+         "quantity": {
+           "type": "string"
+         }
+       }
+    },
+    "PurchaseResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Enjoy your food!"
+        }
+      }
+    }
+  }
+}

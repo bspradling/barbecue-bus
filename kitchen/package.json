@@ -1,0 +1,11 @@
+{
+  "name": "bbq-kitchen",
+  "version": "1.0.0",
+  "description": "The kitchen of the Barbecue Bus to serve delicious food",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Brett Spradling",
+  "license": "ISC"
+}
