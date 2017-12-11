@@ -31,7 +31,7 @@ app.get('/docs', function(request, response) {
 
 var meats = {
   BRISKET: {
-    quantity: 10
+    quantity: 1
   },
   SAUSAGE: {
     quantity: 10
