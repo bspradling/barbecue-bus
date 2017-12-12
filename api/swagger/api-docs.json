@@ -128,7 +128,23 @@
           "example": "Brett Spradling"
         },
         "food": {
-          "$ref": "#/definitions/Menu"
+          "$ref": "#/definitions/FoodOrder"
+        }
+      }
+    },
+    "FoodOrder": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "item": {
+            "type": "string",
+            "example": "BRISKET"
+          },
+          "quantity": {
+            "type": "integer",
+            "example": 2
+          }
         }
       }
     },

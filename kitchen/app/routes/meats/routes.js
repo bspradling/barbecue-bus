@@ -14,7 +14,7 @@ module.exports = {
             const errorEntity = new ApiErrors.ErrorEntity(HttpStatus.INTERNAL_SERVER_ERROR, `Sold out of ${meatType}!`);
             return response.status(errorEntity.statusCode).send(errorEntity.errorEntity);
         }
-        console.log("decreasing");
+        console.log("decreasing meat");
         meats[meatType].quantity--;
         return response.status(HttpStatus.CREATED).send();
     },
