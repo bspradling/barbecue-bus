@@ -25,7 +25,7 @@ module.exports = {
                 integer: true
             }
 
-            if (RandomNumber(options) < 5) {
+            if (RandomNumber(options) < 3) {
                 const errorEntity = new ApiErrors.ErrorEntity(HttpStatus.INTERNAL_SERVER_ERROR, "BURNT", `Sorry, we burnt the ${meatType}!`);
                 return response.status(errorEntity.statusCode).send(errorEntity.errorEntity); 
             }

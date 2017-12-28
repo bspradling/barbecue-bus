@@ -45,11 +45,11 @@ module.exports = {
         },
         function(err, results) {
             if (err) {
-                console.log("ERRORIN!");
-                console.log(err.response)
-                return response.status(HttpStatus.INTERNAL_SERVER_ERROR).send("sorry");
+                console.log("ERROR WITH ORDER!");
+                console.log(err.response);
+                return response.status(HttpStatus.INTERNAL_SERVER_ERROR).send(err.response.data.message);
             }
-            return response.status(HttpStatus.CREATED).send("Enjoy!");
+            return response.status(HttpStatus.CREATED).send("Enjoy your food!");
         });
     }
 }
