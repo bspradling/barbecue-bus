@@ -8,7 +8,7 @@ module.exports = {
         var sideType = request.params.sideType;
 
         if (sides[sideType].quantity <= 0) {
-            const errorEntity = new ApiErrors.ErrorEntity(HttpStatus.INTERNAL_SERVER_ERROR, `Sold out of ${sideType}!`);
+            const errorEntity = new ApiErrors.ErrorEntity(HttpStatus.INTERNAL_SERVER_ERROR, "SOLD_OUT", `Sold out of ${sideType}!`);
             return setImmediate(callback, errorEntity)
         }
         console.log("decreasing side");

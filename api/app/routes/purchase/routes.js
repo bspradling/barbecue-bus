@@ -35,18 +35,19 @@ module.exports = {
         
         Async.map(requestBody.food, (foodOrder, callback) => {
             if (meats.includes(foodOrder.item.toUpperCase())) {
-                console.log(`Sending meat request for: ${foodOrder.item}`)
+                console.log(`Sending ${foodOrder.quantity} meat request(s) for: ${foodOrder.item}`)
                 return makeRequestToKitchen("meats", foodOrder.item.toUpperCase(), foodOrder.quantity, callback)
             }
             if (sides.includes(foodOrder.item.toUpperCase())) {
-                console.log(`Sending side request for: ${foodOrder.item}`)
+                console.log(`Sending ${foodOrder.quantity} side request(s) for: ${foodOrder.item}`)
                 return makeRequestToKitchen("sides", foodOrder.item.toUpperCase(), foodOrder.quantity, callback)
             }
         },
         function(err, results) {
             if (err) {
-                console.log(err);
-                return response.status(HttpStatus.INTERNAL_SERVER_ERROR).send("An unknown exception occurred while fullfilling order")
+                console.log("ERRORIN!");
+                console.log(err.response)
+                return response.status(HttpStatus.INTERNAL_SERVER_ERROR).send("sorry");
             }
             return response.status(HttpStatus.CREATED).send("Enjoy!");
         });
